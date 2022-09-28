@@ -22,7 +22,7 @@ Pozdrav svima,
 - Operating system (NixOS)
 - Expression language
 - Package repository (Nixpkgs)
-- Deployment tool (Nixops)
+- Deployment tool (NixOps)
 
 ...
 
@@ -80,6 +80,10 @@ Pozdrav svima,
 - Linux distribution
 - NixOS = Linux kernel + Nix package manager for managing software
 - Whole system configuration described in Nix expression language
+
+---
+
+# NixOps
 
 ---
 
