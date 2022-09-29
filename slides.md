@@ -18,7 +18,6 @@ Bartol Deak -- Extension Engine Summer Internship 2022
 - Operating system (NixOS)
 - Expression language
 - Package repository (Nixpkgs)
-- Deployment tool (NixOps)
 
 ...
 
@@ -232,19 +231,15 @@ layout: two-cols
 
 ---
 
-# Nix shell
-
----
-
-# NixOps
-
----
-
 # Nix Darwin
 
 ---
 
-# Idea of Nix(PM/OS/lang/pkgs/shell/Ops)
+# Nix shell
+
+---
+
+# Idea of Nix(PM/OS/lang/pkgs/shell)
 
 ---
 layout: center
