@@ -26,13 +26,36 @@ Bartol Deak -- Extension Engine Summer Internship 2022
 
 # Nix expression language
 
+<div class="grid grid-cols-2 gap-4">
+<div>
+
 - Purely functional DSL
 - Used to:
   - Instruct Nix how to build packages
   - Declaratively express system configuration
 
-<!-- todo -->
+</div>
+<div>
 
+```nix
+{ argument, ... }:
+let 
+  name = "Bartol";
+in {
+  greeting = {
+    message = "Hello, ${name}";
+  };
+
+  # shortcut
+  greeting.message = "Hello, ${name}";
+}
+```
+
+</div>
+</div>
+
+---
+layout: two-cols
 ---
 
 # Nix package manager
@@ -40,6 +63,37 @@ Bartol Deak -- Extension Engine Summer Internship 2022
 <!-- todo
 - 2003
 -->
+
+::right::
+
+```nix
+rustPlatform.buildRustPackage rec {
+  pname = "ripgrep";
+  version = "13.0.0";
+
+  src = fetchFromGitHub {
+    owner = "BurntSushi";
+    repo = pname;
+    rev = version;
+    sha256 = "0pdcjzfi0fclbzmmf701fdizb95iw427vy3m1svy6gdn2zwj3ldr";
+  };
+  cargoSha256 = "1kfdgh8dra4jxgcdb0lln5wwrimz0dpp33bq3h7jgs8ngaq2a9wp";
+
+  installCheckPhase = ''
+    file="$(mktemp)"
+    echo "abc\nbcd\ncde" > "$file"
+    $out/bin/rg -N 'cd' "$file"
+    $out/bin/rg -N 'cd' "$file"
+  '';
+
+  meta = with lib; {
+    description = "A utility that combines the usability of The Silver Searcher with the raw speed of grep";
+    license = with licenses; [ unlicense mit ];
+    maintainers = with maintainers; [ tailhook globin ma27 zowoq ];
+    mainProgram = "rg";
+  };
+}
+```
 
 ---
 
@@ -193,7 +247,7 @@ layout: two-cols
 
 ---
 
-# Idea of Nix(PM/OS/lang/pkgs/ops)
+# Idea of Nix(PM/OS/lang/pkgs/Ops)
 
 <!-- todo -->
 
