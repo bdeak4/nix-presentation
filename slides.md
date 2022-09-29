@@ -67,8 +67,6 @@ layout: two-cols
 - Ensures that packages are reproducible and don't have undeclared dependencies
 - [Full ripgrep package example &rarr;](https://github.com/NixOS/nixpkgs/blob/master/pkgs/tools/text/ripgrep/default.nix)
 
-<!-- todo -->
-
 ::right::
 
 ```nix
@@ -240,24 +238,16 @@ layout: two-cols
 
 # NixOps
 
-<!-- todo -->
-
 ---
 
 # Nix Darwin
 
-<!-- todo -->
-
 ---
 
 # Idea of Nix(PM/OS/lang/pkgs/shell/Ops)
-
-<!-- todo -->
 
 ---
 layout: center
 ---
 
 # Q&A
-
-<!-- todo -->
