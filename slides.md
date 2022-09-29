@@ -30,9 +30,10 @@ Bartol Deak -- Extension Engine Summer Internship 2022
 <div>
 
 - Purely functional DSL
+- Declarative
 - Used to:
   - Instruct Nix how to build packages
-  - Declaratively express system configuration
+  - Express system configuration
 
 </div>
 <div>
@@ -60,9 +61,13 @@ layout: two-cols
 
 # Nix package manager
 
-<!-- todo
-- 2003
--->
+- Cross platform
+- Initial release in 2003
+- [nesto o storeu i example (ls - symlink u store), TODO]
+- Ensures that packages are reproducible and don't have undeclared dependencies
+- [Full ripgrep package example &rarr;](https://github.com/NixOS/nixpkgs/blob/master/pkgs/tools/text/ripgrep/default.nix)
+
+<!-- todo -->
 
 ::right::
 
@@ -116,11 +121,6 @@ rustPlatform.buildRustPackage rec {
   85199
   ```
 
-## Hydra
-
-- Continuous integration service for Nix based projects
-- Used to build Nix, NixOS and Nixpkgs
-
 ---
 layout: two-cols
 ---
@@ -130,6 +130,7 @@ layout: two-cols
 - Linux distribution
 - NixOS = Linux kernel + Nix package manager
 - Whole system configuration described in Nix expression language
+- Each update builds new "generation"
 
 ::right::
 
@@ -154,14 +155,13 @@ layout: two-cols
     enable = true;
     virtualHosts."example.com" = {
       enableACME = true;
+      forceSSL= true;
       locations."/".proxyPass = "http://localhost:3001";
     };
   };
-
   environment.systemPackages = with pkgs; [ vim tmux htop ];
 }
 ```
-
 
 ---
 
@@ -227,11 +227,14 @@ layout: two-cols
   };
   # ...
 }
-
 ```
 
 </div>
 </div>
+
+---
+
+# Nix shell
 
 ---
 
@@ -247,7 +250,7 @@ layout: two-cols
 
 ---
 
-# Idea of Nix(PM/OS/lang/pkgs/Ops)
+# Idea of Nix(PM/OS/lang/pkgs/shell/Ops)
 
 <!-- todo -->
 
