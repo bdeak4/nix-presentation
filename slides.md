@@ -10,10 +10,6 @@ css: unocss
 
 Bartol Deak -- Extension Engine Summer Internship 2022
 
-<!--
-Pozdrav svima,
--->
-
 ---
 
 # What is Nix really?
@@ -26,10 +22,6 @@ Pozdrav svima,
 
 ...
 
-<!--
-
--->
-
 ---
 
 # Nix expression language
@@ -39,11 +31,13 @@ Pozdrav svima,
   - Instruct Nix how to build packages
   - Declaratively express system configuration
 
+<!-- todo -->
+
 ---
 
 # Nix package manager
 
-<!--
+<!-- todo
 - 2003
 -->
 
@@ -189,14 +183,24 @@ layout: two-cols
 
 # NixOps
 
+<!-- todo -->
+
 ---
 
 # Nix Darwin
+
+<!-- todo -->
 
 ---
 
 # Idea of Nix(PM/OS/lang/pkgs/ops)
 
+<!-- todo -->
+
+---
+layout: center
 ---
 
 # Q&A
+
+<!-- todo -->
