@@ -74,12 +74,116 @@ Pozdrav svima,
 - Used to build Nix, NixOS and Nixpkgs
 
 ---
+layout: two-cols
+---
 
 # NixOS
 
 - Linux distribution
-- NixOS = Linux kernel + Nix package manager for managing software
+- NixOS = Linux kernel + Nix package manager
 - Whole system configuration described in Nix expression language
+
+::right::
+
+```nix
+{ config, pkgs, ... }:
+{
+  imports = [ <nixpkgs/nixos/modules/virtualisation/amazon-image.nix> ];
+  nix.trustedUsers = [ "@wheel" ];
+
+  networking.hostName = "nixos-vm";
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
+
+  users.users.rasporedar = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "docker" ];
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAfuAQ43SM0EVulTuivIuAGI0P2RcREUY0nTRtlolZDZ b@bdeak.net" ];
+  };
+  security.sudo.wheelNeedsPassword = false;
+  services.openssh.passwordAuthentication = false;
+
+  services.nginx = {
+    enable = true;
+    virtualHosts."example.com" = {
+      enableACME = true;
+      locations."/".proxyPass = "http://localhost:3001";
+    };
+  };
+
+  environment.systemPackages = with pkgs; [ vim tmux htop ];
+}
+```
+
+
+---
+
+<div class="grid grid-cols-2 gap-4">
+<div>
+
+```nix
+{ config, pkgs, ... }:
+{
+  # ...
+  services.xserver.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  users.users.bd = {
+    isNormalUser = true;
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
+  };
+  security.sudo.wheelNeedsPassword = false;
+
+  environment.systemPackages = with pkgs; [
+    firefox-wayland
+    vim
+    git
+    ripgrep
+  ];
+
+  virtualisation.docker.enable = true;
+
+  services.openssh.enable = true;
+  services.fprintd.enable = true;
+  # ...
+}
+```
+
+</div>
+<div>
+
+```nix
+{ config, pkgs, ... }:
+{
+  # ...
+  home-manager.users.bd = {
+    programs.bash = {
+      enable = true;
+      sessionVariables = {
+        EDITOR = "vim";
+      };
+    };
+
+    programs.vim = {
+      enable = true;
+      plugins = with pkgs.vimPlugins; [
+        vim-nix
+      ];
+      settings = {
+        ignorecase = true;
+      };
+      extraConfig = ''
+        au FileType markdown setl ts=2 sw=2 et
+      '';
+    };
+  };
+  # ...
+}
+
+```
+
+</div>
+</div>
 
 ---
 
