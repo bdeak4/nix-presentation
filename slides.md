@@ -251,3 +251,9 @@ layout: center
 ---
 
 # Q&A
+
+---
+layout: center
+---
+
+# <https://nix-presentation.bdeak.net>
