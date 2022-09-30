@@ -255,9 +255,69 @@ layout: two-cols
 
 # Nix Darwin
 
+- Brings the convenience of a NixOS declarative system configuration to macOS
+- Uses Nix package manager, Nix language and Nixpkgs
+- Benefit of not having to switch to Linux
+- Very similar to NixOS but not 1:1 replica
+
 ---
 
+<div class="grid grid-cols-2 gap-4">
+<div>
+
 # Nix shell
+
+- provides easy way to create virtual environments and try out packages
+
+```sh
+[bd@pc:~]$ nix-shell -p tree
+
+[nix-shell:~]$ tree
+.
+├── node_modules
+│   ├── acorn
+│   │   ├── bin
+│   │   │   └── acorn
+│   │   ├── CHANGELOG.md
+│   │   ├── dist
+│   │   │   ├── acorn.d.ts
+
+[nix-shell:~]$ ^D
+exit
+
+[bd@pc:~]$ tree
+The program 'tree' is not in your PATH. 
+```
+
+</div>
+<div>
+
+```nix
+with import <nixpkgs> { };
+stdenv.mkDerivation {
+  name = "azure-nixos-image_env";
+
+  nativeBuildInputs = [
+    azure-cli
+    azure-storage-azcopy
+    bash
+    jq
+    cacert
+  ];
+
+  AZURE_CONFIG_DIR="/tmp/azure-cli/.azure";
+}
+```
+
+- External dependencies can easily be described in `shell.nix` files.
+  And applied via:
+
+  ```sh
+  $ nix-shell
+  ```
+
+</div>
+</div>
 
 ---
 
