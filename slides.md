@@ -55,18 +55,28 @@ in {
 </div>
 
 ---
-layout: two-cols
----
+
+<div class="grid grid-cols-2 gap-4">
+<div>
 
 # Nix package manager
 
 - Cross platform
 - Initial release in 2003
-- [nesto o storeu i example (ls - symlink u store), TODO]
+- Packages are stored in nix store and linked to specific locations on system.
+  For example:
+  ```
+  $ which rg
+  /run/current-system/sw/bin/rg
+
+  $ readlink /run/current-system/sw/bin/rg
+  /nix/store/w4mshhlbxrm6ydp06li19sp2g8332krl-ripgrep-13.0.0/bin/rg
+  ```
 - Ensures that packages are reproducible and don't have undeclared dependencies
 - [Full ripgrep package example &rarr;](https://github.com/NixOS/nixpkgs/blob/master/pkgs/tools/text/ripgrep/default.nix)
 
-::right::
+</div>
+<div>
 
 ```nix
 rustPlatform.buildRustPackage rec {
@@ -96,6 +106,9 @@ rustPlatform.buildRustPackage rec {
   };
 }
 ```
+
+</div>
+</div>
 
 ---
 
