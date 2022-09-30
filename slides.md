@@ -12,6 +12,15 @@ Bartol Deak -- Extension Engine Summer Internship 2022
 
 ---
 
+# What I worked on durning 2nd part of internship
+
+- Infrastructure provisioning with Pulumi
+- Server configuration management with Nix(OS)
+- Deployment automatization with Github Actions
+- Explored alternative ways to do development environments
+
+---
+
 # What is Nix really?
 
 - Package manager
