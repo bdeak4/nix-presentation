@@ -321,7 +321,11 @@ stdenv.mkDerivation {
 
 ---
 
-# Idea of Nix(PM/OS/lang/pkgs/shell)
+# 3 big ideas of Nix(PM/OS/lang/pkgs/shell)
+
+- **Reproducibility** - If package works on one machine, it must also work on another
+- **Declarativeness** - Easier to share and less error prone than imperativeness
+- **Reliability** - Able to rollback to last working/clean version of system
 
 ---
 layout: center
