@@ -269,7 +269,7 @@ layout: two-cols
 
 - provides easy way to create virtual environments and try out packages
 
-```sh
+```
 [bd@pc:~]$ nix-shell -p tree
 
 [nix-shell:~]$ tree
